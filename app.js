@@ -11,10 +11,13 @@ const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+// seting dotenv configuration
+require('dotenv').config()
+
 var app = express();
 
 async function connectToDb() {
-  await mongoose.connect('mongodb+srv://learningNodejs:cuEz3lobPNOEP2pr@cluster0.6msjpem.mongodb.net/Twitter-Clone?retryWrites=true&w=majority');
+  await mongoose.connect(process.env.DB_URI);
   const PORT = 3000
   app.listen(PORT, ()=>{
       console.log(`----- listening at port ${PORT} ----- `);
@@ -26,9 +29,6 @@ connectToDb().catch(err => console.log(err));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// seting dotenv configuration
-require('dotenv').config()
 
 app.use(logger('dev'));
 app.use(express.json());

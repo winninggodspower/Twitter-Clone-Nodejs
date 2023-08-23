@@ -1,0 +1,64 @@
+<section>
+    <nav>
+        <ul>
+            <li>
+                <img src="images/twitter-icon.png" width="50px" alt="">
+            </li>
+            <!-- <li id="twitter-icon" class="fa fa-twitter"></li> -->
+            <li><a href="">
+                <i class="material-symbols-rounded">home</i>
+                <span class="nav-text nav-current">home</span> 
+            </a></li>
+            <li><a href="">
+                <i class="material-symbols-rounded">person</i>
+                <span class="nav-text">profile</span>
+            </a></li>
+            <li><a href="">
+                <i class="material-symbols-rounded">search</i>
+                <span class="nav-text">search</span>
+            </a></li>
+            <li class="tweet-btn tweet-side-btn" onClick="openPopup()" >
+                <a href="" class="tweet-btn" data-tweet-button-popup="true" style="margin-top: 10px;">Tweet</a>
+            </li>
+        </ul>
+    
+        <div class="user-section" style="font-family: 'Times New Roman', Times, serif;">
+            <img class="user-section-image" src="https://ui-avatars.com/api/?name=<%= user.first_name %>+<%= user.last_name %>&size=40&bold=true&background=random" width="40px" height="40px" alt="profile image">
+            <div class="user-section-info">
+                <span class="username"><%= user.first_name %> <%= user.last_name %></span>
+                <span class="tag">@<%= user.first_name %><%= user.last_name %></span>
+            </div>
+        </div>
+    
+    </nav>
+</section>
+
+
+<!-- beginning of popup post menu -->
+<div id="post-popup-wrapper">
+    <div id="post-popup">
+        
+        <div id="exit-post-popup" >
+            <img src="images/cancel-icon.svg" alt="cancel-icon" onClick="closePopup()" style="cursor: pointer;">
+        </div>
+
+        <div class="new-post-section post-section">
+            <div>
+                <img src="images/profile.jpg" class="user-section-image" width="40px" height="40px" alt="">
+            </div>
+            <form class="post-content" action="/post_create" method="post">
+                <textarea class="post-content-textarea post-font-size" name="content" id="content" placeholder="What is happening?!" required></textarea>
+                <hr>
+                <div class="post-content-bottom">
+                    <div class="icons text-primary" >
+                        <i class="material-symbols-rounded" style="font-size: 24px; vertical-align: text-bottom; ">imagesmode</i>
+                    </div>
+                    <button type="submit" class="tweet-btn pt-12">Tweet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script src="javascripts/post-popup.js"></script>
+<!-- end of popup post menu -->

@@ -1,0 +1,71 @@
+<%- include('partials/head.ejs', {title: 'Twitter'})%>
+<body>
+
+    <div id="content">
+        
+        <!-- beginning of navigation -->
+        <%- include('partials/navbar.ejs') -%>
+        <!-- end of navigation -->
+       
+
+        <!-- beginning of main section -->
+        <main style="border-left: 1px solid rgb(32, 32, 32); border-right: 1px solid rgb(32, 32, 32);;">
+
+            <div class="new-post-section post-section">
+                <div>
+                    <img src="https://ui-avatars.com/api/?name=<%= user.first_name %>+<%= user.last_name %>&size=40&bold=true&background=random" class="user-section-image" width="40px" height="40px" alt="">
+                </div>
+                <form class="post-content" action="/post_create" method="post">
+                    <textarea class="post-content-textarea post-font-size" name="content" id="content" placeholder="What is happening?!" required></textarea>
+                    <hr>
+                    <div class="post-content-bottom">
+                        <div class="icons text-primary" >
+                            <i class="material-symbols-rounded" style="font-size: 24px; vertical-align: text-bottom; ">imagesmode</i>
+                        </div>
+                        <button type="submit" class="tweet-btn pt-12">Tweet</button>
+                    </div>
+                </form>
+            </div>
+
+            <hr>
+
+            <% posts.forEach(post => { %>
+                <div class="new-post-section post-section pt-12">
+                    <div>
+                        <img src="https://ui-avatars.com/api/?name=<%= post.user.first_name %>+<%= post.user.last_name %>&size=40&bold=true&background=random" class="user-section-image" width="40px" height="40px" alt="">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user-info">
+                            <span class="username"><%- post.user.first_name %> <%- post.user.last_name %></span>
+                            <span class="tag">@<%= post.user.first_name %><%= post.user.last_name %></span>
+                            <span class="timeago">.
+                                <%= post.createdAt %> 
+                            </span>
+                        </div>
+                        <p class="post-font-size " style="margin: 0px;">
+                        <%= post.content %>
+                        </p>
+                        <hr>
+                        <div class="post-content-bottom">
+                            <div class="icons" style="font-size: 18px;">
+                                <i class="material-symbols-rounded" style="vertical-align: text-bottom; font-size: 20px;">favorite</i> <%= post.like%>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            <% }) %>
+            
+            <hr>
+        </main>
+        <!-- end of main section -->
+
+
+        <!-- beginning of aside -->
+        <%- include('partials/aside.ejs', {text: 'hey asid hope you got my message'} ) %>
+        <!-- end of aside -->
+
+    </div>
+
+    
+</body>
+</html>

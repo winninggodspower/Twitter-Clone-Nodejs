@@ -1,0 +1,21 @@
+<%- include('partials/head.ejs', {title: 'Login - Twitter'})%>
+<body>
+    <% if (errorMessage) { %>
+        <p style="color: red;"><%= errorMessage %></p>
+    <% } %>
+
+    <form action="/auth/login" method="post">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <input type="submit">
+        
+    </form>
+    
+</body>
+</html>
